@@ -91,14 +91,14 @@ function pmpmromk_pmpro_has_membership_level($haslevel, $user_id, $levels) {
 		return $haslevel;
 	
 	//check if the member key user has this level
-	remove_filter('pmpro_has_membership_level', 'pmpmromk_pmpro_has_membership_level');
+	remove_filter('pmpro_has_membership_level', 'pmpmromk_pmpro_has_membership_level', 10, 3);
 	if(pmpro_hasMembershipLevel($levels, $pmpromk_user_id))
 		$haslevel = true;
-	add_filter('pmpro_has_membership_level', 'pmpmromk_pmpro_has_membership_level');
+	add_filter('pmpro_has_membership_level', 'pmpmromk_pmpro_has_membership_level', 10, 3);
 
 	return $haslevel;
 }
-add_filter('pmpro_has_membership_level', 'pmpmromk_pmpro_has_membership_level');
+add_filter('pmpro_has_membership_level', 'pmpmromk_pmpro_has_membership_level', 10, 3);
 
 /*
 	Filter the pmpro_has_member_access function.
